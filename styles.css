@@ -1,5 +1,5 @@
 .gameBoardSpace {
-  width: 190px;
+  width: 200px;
   display: flex;
   flex-wrap: wrap;
 }
