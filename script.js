@@ -1,21 +1,20 @@
-const gameBoardSpace = document.querySelector(".gameBoardSpace");
-
-const Gameboard = () => {
+const createGameZone = (() => {
+  const gameBoardSpace = document.querySelector(".gameBoardSpace");
   const gameBoardArray = ["a", "b", "c", "d", "e", "f", "g", "h", "j"];
 
-  function createGameDiv() {
+  function createGameTile() {
     const div = document.createElement("div");
-    div.className = "gameDiv";
+    div.className = "tile";
     gameBoardSpace.appendChild(div);
     return div;
   }
 
-  const createGameBoardSpace = (gameBoardArray) => {
-    gameBoardArray.forEach((letter) => createGameDiv(letter));
+  const createGameBoardTiles = () => {
+    gameBoardArray.forEach((letter) => createGameTile(letter));
   };
-  return { createGameBoardSpace };
-};
-Gameboard().createGameBoardSpace();
+  return { createGameBoardTiles };
+})();
+createGameZone.createGameBoardTiles();
 
 const Player = () => {};
 
