@@ -3,10 +3,11 @@ const createGameZone = (() => {
   const gameBoardArray = ["a", "b", "c", "d", "e", "f", "g", "h", "j"];
 
   function createGameTile() {
-    const div = document.createElement("div");
-    div.className = "tile";
-    gameBoardSpace.appendChild(div);
-    return div;
+    const tile = document.createElement("div");
+    tile.className = "tile";
+    gameBoardSpace.appendChild(tile);
+    tile.addEventListener("click", (e) => (e.target.textContent = "X"));
+    return tile;
   }
 
   const createGameBoardTiles = () => {
@@ -14,12 +15,14 @@ const createGameZone = (() => {
   };
   return { createGameBoardTiles };
 })();
-createGameZone.createGameBoardTiles();
 
-const Player = () => {};
+const Player = (name, mark) => {
+  return { name, mark, points };
+};
 
-const Game = () => {};
+const Game = (() => {
+  createGameZone.createGameBoardTiles();
+})();
 
-// gamebord object - place where the game runs
 //player object - contains player's propertys: name, type of mark (x or o), score of player
 //game flow object - Game:
