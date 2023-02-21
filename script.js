@@ -1,28 +1,39 @@
 const createGameZone = (() => {
   const gameBoardSpace = document.querySelector(".gameBoardSpace");
-  const gameBoardArray = ["a", "b", "c", "d", "e", "f", "g", "h", "j"];
+
+  const gameBoardArray = [];
+  const rows = 3;
+  const columns = 3;
+
+  console.log(gameBoardArray);
 
   function createGameTile() {
     const tile = document.createElement("div");
     tile.className = "tile";
     gameBoardSpace.appendChild(tile);
-    tile.addEventListener("click", (e) => (e.target.textContent = "X"));
+
     return tile;
   }
-
   const createGameBoardTiles = () => {
-    gameBoardArray.forEach((letter) => createGameTile(letter));
+    for (let i = 0; i < rows; i++) {
+      gameBoardArray[i] = [];
+      for (let j = 0; j < columns; j++) {
+        gameBoardArray[i][j] = 0;
+        createGameTile();
+      }
+    }
   };
+
   return { createGameBoardTiles };
 })();
 
-const Player = (name, mark) => {
+const Player = (name, mark, points, e) => {
   return { name, mark, points };
 };
+
+let PlayerOne = Player("Player One", "x", 0);
+let PlayerTwo = Player("Player Two", "o", 0);
 
 const Game = (() => {
   createGameZone.createGameBoardTiles();
 })();
-
-//player object - contains player's propertys: name, type of mark (x or o), score of player
-//game flow object - Game:
