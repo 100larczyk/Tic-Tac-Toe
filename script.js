@@ -39,12 +39,15 @@ const Game = (() => {
 
   let activePlayer = PlayerOne;
 
-  createGameZone.gameBoardArray.forEach((row) => {
-    row.forEach((tile) => {
+  //uzupełnia pola gry wartością X lub O -  zaleznie od aktywnego gracza, zabezpiecza przezd kliknięcie więcej niż jeden raz w pole gry
+  createGameZone.gameBoardArray.forEach((row, i) => {
+    row.forEach((tile, j) => {
       tile.addEventListener("click", (e) => {
         if (e.target.textContent === "") {
+          createGameZone.gameBoardArray[i].splice(j, 1, activePlayer.mark); //zastępuje wartość poszczególnych indeksów w gameboardArray wartością znacznika gracza
           e.target.textContent = activePlayer.mark;
           activePlayer = activePlayer === PlayerOne ? PlayerTwo : PlayerOne;
+          console.log(createGameZone.gameBoardArray);
         } else return;
       });
     });
