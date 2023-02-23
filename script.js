@@ -42,8 +42,10 @@ const Game = (() => {
   createGameZone.gameBoardArray.forEach((row) => {
     row.forEach((tile) => {
       tile.addEventListener("click", (e) => {
-        e.target.textContent = activePlayer.mark;
-        activePlayer = activePlayer === PlayerOne ? PlayerTwo : PlayerOne;
+        if (e.target.textContent === "") {
+          e.target.textContent = activePlayer.mark;
+          activePlayer = activePlayer === PlayerOne ? PlayerTwo : PlayerOne;
+        } else return;
       });
     });
   });
