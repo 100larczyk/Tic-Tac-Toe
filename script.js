@@ -46,9 +46,9 @@ const Game = (() => {
         if (e.target.textContent === "") {
           createGameZone.gameBoardArray[i].splice(j, 1, activePlayer.mark); //zastępuje wartość poszczególnych indeksów w gameboardArray wartością znacznika gracza
           e.target.textContent = activePlayer.mark;
+          checkForWinner(array, i, j);
           activePlayer = activePlayer === PlayerOne ? PlayerTwo : PlayerOne;
           console.log(createGameZone.gameBoardArray);
-          checkForWinner(array, i, j);
         } else return;
       });
     });
@@ -80,13 +80,14 @@ const Game = (() => {
       return true;
     else return false;
   }
+
   function checkForWinner(array, i, j) {
-    if (areAllElementsSameInRow(array, i) === true) {
-      console.log("row is the same");
-    } else if (areAllElementsSameInColumn(array, j) === true) {
-      console.log("column is the same");
-    } else if (areAllElementSameInCross(array) === true) {
-      console.log("cross is same");
+    if (
+      areAllElementsSameInRow(array, i) === true ||
+      areAllElementsSameInColumn(array, j) === true ||
+      areAllElementSameInCross(array) === true
+    ) {
+      console.log(`${activePlayer.name} wins!`);
     }
   }
 })();
