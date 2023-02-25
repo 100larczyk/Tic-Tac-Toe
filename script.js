@@ -35,8 +35,6 @@ const PlayerOne = Player("Player One", "X");
 const PlayerTwo = Player("Player Two", "O");
 
 const Game = (() => {
-  createGameZone.createGameBoardTiles();
-
   let activePlayer = PlayerOne;
 
   //uzupełnia pola gry wartością X lub O -  zaleznie od aktywnego gracza, zabezpiecza przezd kliknięcie więcej niż jeden raz w pole gry
